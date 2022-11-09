@@ -1,0 +1,24 @@
+
+
+/* Header styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: powderblue;
+    height: 100px;
+    
+
+}
+
+.title {
+    text-align: center;
+    width: 150px;
+    justify-content: center;
+}
+
+header > * {
+    height: 100px;
+    width: 100px;
+    padding: 10px;
+    
+}

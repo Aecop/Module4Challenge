@@ -1,24 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>JS Quiz</title>
-    <link rel="stylesheet" href="./css/style.css"/>
-</head>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>JS Quiz</title>
+        <link rel="stylesheet" href="./css/style.css"/>
+    </head>
 
-<body>
-    <header>
-        <h3 class="title">Coding Quiz</h3>
-        <div id="scorebox"></div>
-        <div id="time"></div>
-    </header>
+    <body>
+        <!-- Intro page -->
+        <main id="introp">
+            <h2 id="title">JS Quiz!<h2>
+            <a id="highscore">View Highscore!</a>
+            
+            <section>
+                <h1>Coding Quiz!</h1>
+                <p>Welcome to JS quiz! You will be given 4 question of JS question that learned from week 3. 
+                    Each question has 20 seconds of timer. Please take your time and answer within the time limit.
+                </p>
+                <div>
+                    <button id="startquiz">Start Quiz</button>
+                </div>  
+            </section>
+            
+        </main>
 
-    <div class="container">
-        <h2></h2>
-    </div>
+        <!-- Quiz (Question and Anwer) -->
+        <section id="quizp">
+            <p id="timer"></p>
+            <h1 id="question1"></h1>
+            <ol>
+                <li>
+                    <button class="wrong">def hello():</button>
+                </li>
+                <li>
+                    <button class="correct">function hello(){
 
+                    } </button>
+                </li>
+                <li>
+                    <button class="wrong">return_type hello(){
 
-    <script src="./js/scipt.js"></script>
-</body>
+                    }</button>
+                </li>
+                <li>
+                    <button class="wrong">func hello() {
+
+                    }</button>
+                </li>
+            </ol>
+        </section>
+
+        <section id="quizp2">
+            <p id="timer"></p>
+            <h1 id="question2"></h1>
+            <ol>
+                <li>
+                    <button class="correct">console.log()</button>
+                </li>
+                <li>
+                    <button class="wrong">print() </button>
+                </li>
+                <li>
+                    <button class="wrong">printf()</button>
+                </li>
+                <li>
+                    <button class="wrong">system.out.println()<button>
+                </li>
+            </ol>
+        </section>
+
+        <section id="quizp3">
+            <p id="timer"></p>
+            <h1 id="question3"></h1>
+            <ol>
+                <li>
+                    <button class="wrong">Undefined</button>
+                </li>
+                <li>
+                    <button class="wrong">"namenamenamenamenamenamenamenamenamename" </button>
+                </li>
+                <li>
+                    <button class="correct">"name10"</button>
+                </li>
+                <li>
+                    <button class="wrong">"I Don't know"</button>
+                </li>
+            </ol>
+        </section>
+
+        <section id="quizp4">
+            <p id="timer"></p>
+            <h1 id="question4"></h1>
+            <ol>
+                <li>
+                    <button class="wrong">fruits[0]</button>
+                </li>
+                <li>
+                    <button class="correct">fruit[2] </button>
+                </li>
+                <li>
+                    <button class="wrong">fruit[1]</button>
+                </li>
+                <li>
+                    <button class="wrong">fruit[3]</button>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Results after quiz -->
+        <section id="resultp">
+
+        </section>
+
+        <!-- High score section -->
+        <section id="highscorep">
+
+        </section>
+        
+        <script src="./js/test.js"></script>
+    </body>
+</html>

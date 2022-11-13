@@ -93,3 +93,4 @@ function wrongAnswer() {
     alert("Wrong!");
     nextQuestion();
 }
+

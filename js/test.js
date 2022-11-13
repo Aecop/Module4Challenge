@@ -27,8 +27,7 @@ function startTimer(){
         counter++;
         if(counter >= 60){
             clearInterval(timedOut);
-            quizp1.style.display="none";
-            introp.style.display="block"; 
+            
         }
     },1000);
 }
@@ -57,7 +56,6 @@ var question4Element = document.getElementById("question4")
 question1Element.innerHTML = questions[0];
 
 //When clicked correct answer, call nextQuestion function to display 2nd question
-
 var correctAnswerElements = document.getElementsByClassName("correct");
 for (i = 0; i < correctAnswerElements.length; ++i) {
     correctAnswerElements[i].addEventListener("click", nextQuestion);
@@ -71,14 +69,17 @@ function nextQuestion(event) {
         question2Element.innerHTML = questions[1];
         quizp1.style.display = "none";
         quizp2.style.display = "block";
+        startTimer();
     } else if (currentQuestion === 2) {
         question3Element.innerHTML = questions[2];
         quizp2.style.display = "none";
         quizp3.style.display = "block";
+        startTimer();
     } else if (currentQuestion === 3) {
         question4Element.innerHTML = questions[3];
         quizp3.style.display = "none";
         quizp4.style.display = "block";
+        startTimer();
     } else {
         quizp4.style.display = "none";
         resultp.style.display = "block";
@@ -87,7 +88,11 @@ function nextQuestion(event) {
     startTimer();
     ++currentQuestion;
 }
-
+//When clicked wrong answer, alert will show up saying "Wrong!" and it will not continue to next page. 
+var wrongAnswerElement = document.getElementsByClassName("wrong");
+for (i = 0; i < wrongAnswerElement.length; ++i) {
+    wrongAnswerElement[i].addEventListener("click", wrongAnswer)
+}
 
 function wrongAnswer() {
     alert("Wrong!");

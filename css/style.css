@@ -47,29 +47,63 @@ h2 {
 
 #quizp {
     display: none;
+    text-align: center;
 }
 #quizp2 {
     display: none;
+    text-align: center;
 }
 #quizp3 {
     display: none;
+    text-align: center;
 }
 #quizp4 {
     display: none;
+    text-align: center;
 }
 
 
 
+ol {
+    display:inline-block;
+    justify-content: center;
+    justify-content: space-between;
+    list-style: none;
+}
 
 li {
-    border: 3 solid black;
+    border: 5 solid black;
     padding: 20px;
+    
 }
 
 .correct {
     transition: all .2s ease-in-out;
+    border-radius: 20px;
+    height: 60px;
+    width: 13em;
+    box-shadow: 2px 2px 2px;
+   
+    
 }
 .correct:hover {
     opacity: .5;
     transform: scale(1.2)
+}
+.wrong{
+    transition: all .2s ease-in-out;
+    border-radius: 20px;
+    height: 60px;
+    width: 13em;
+    box-shadow: 2px 2px 2px;
+    
+}
+.wrong:hover {
+    opacity: .5;
+    transform: scale(1.2)
+}
+
+
+h1 {
+    text-align: center;
 }

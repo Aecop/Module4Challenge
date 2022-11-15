@@ -36,8 +36,6 @@ function startTimer(){
 
 
 
-
-
 //Question and Answer stored 
 
 var questions = 
@@ -63,8 +61,8 @@ for (i = 0; i < correctAnswerElements.length; ++i) {
 var scoreTrack = 0;
 var currentQuestion = 1;
 
-function nextQuestion(event) {
-    event.preventDefault()
+function nextQuestion() {
+    
     if (currentQuestion === 1) {
         question2Element.innerHTML = questions[1];
         quizp1.style.display = "none";
@@ -97,8 +95,9 @@ for (i = 0; i < wrongAnswerElement.length; ++i) {
     wrongAnswerElement[i].addEventListener("click", wrongAnswer)
 }
 
-function wrongAnswer() {
+function wrongAnswer(event) {
     alert("Wrong!");
+    event.preventDefault()
     nextQuestion();
 }
 // Getting user name and storing it to the local storage. 
@@ -107,12 +106,14 @@ var submitB = document.getElementById("submit");
 
 function highScore(){
     var storedHighScore = {
-        fullName: fullName.value,
-        scoreTrack: scoreTrack.value 
+            fullName: fullName.value,
+            scoreTrack: scoreTrack
     }
-    localStorage.setItem("storedHighScore", JSON.stringify("storedHighScore"));
+    localStorage.setItem("Score", JSON.stringify(storedHighScore));
 }
 
 submitB.addEventListener("click", function() {
     highScore();
-})
+    scoreTrack = 0
+});
+

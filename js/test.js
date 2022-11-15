@@ -1,9 +1,11 @@
+// Grabbing each page in html by ID
 var introp = document.getElementById("introp");
 var quizp1 = document.getElementById("quizp");
 var quizp2 = document.getElementById("quizp2");
 var quizp3 = document.getElementById("quizp3");
 var quizp4 = document.getElementById("quizp4");
 var resultp = document.getElementById("resultp")
+var highscorep = document.getElementById("highscorep")
 
 // Event listener to start the time, and quiz once button is clicked.
 var btnElement = document.getElementById("startquiz");
@@ -36,9 +38,6 @@ function startTimer(){
 
 
 
-
-
-
 //Question and Answer stored 
 
 var questions = 
@@ -61,6 +60,7 @@ for (i = 0; i < correctAnswerElements.length; ++i) {
     correctAnswerElements[i].addEventListener("click", nextQuestion);
 }
 
+var scoreTrack = 0;
 var currentQuestion = 1;
 
 function nextQuestion(event) {
@@ -69,16 +69,19 @@ function nextQuestion(event) {
         question2Element.innerHTML = questions[1];
         quizp1.style.display = "none";
         quizp2.style.display = "block";
+        scoreTrack += 1;
         startTimer();
     } else if (currentQuestion === 2) {
         question3Element.innerHTML = questions[2];
         quizp2.style.display = "none";
         quizp3.style.display = "block";
+        scoreTrack += 1;
         startTimer();
     } else if (currentQuestion === 3) {
         question4Element.innerHTML = questions[3];
         quizp3.style.display = "none";
         quizp4.style.display = "block";
+        scoreTrack +=1 ;
         startTimer();
     } else {
         quizp4.style.display = "none";
@@ -98,4 +101,18 @@ function wrongAnswer() {
     alert("Wrong!");
     nextQuestion();
 }
+// Getting user name and storing it to the local storage. 
+var fullName = document.getElementById("fullname");
+var submitB = document.getElementById("submit");
 
+function highScore(){
+    var storedHighScore = {
+        fullName: fullName.value,
+        scoreTrack: scoreTrack.value 
+    }
+    localStorage.setItem("storedHighScore", JSON.stringify("storedHighScore"));
+}
+
+submitB.addEventListener("click", function() {
+    highScore();
+})

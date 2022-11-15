@@ -46,7 +46,22 @@ function startQuiz(){
 
 
 
+title = ['Fist Q', 'Second Q', 'Third Q', 'Fourth Q'];
+labels[labels1, labels2, labels3, labels4];
+labels1 =[];
+labels2 = [];
+labels3 = [];
+labels4 = [];
+answers = [2,1,2,1];
 
+// print the question title
+console.log(title[0]);
+// print the choices
+console.log(labels[0]);
+// accept user answer
+
+// compare
+correct = userAnswer === answer[0];
 
 
 //stored question and answer

@@ -7,6 +7,7 @@ var quizp4 = document.getElementById("quizp4");
 var resultp = document.getElementById("resultp")
 var highscorep = document.getElementById("highscorep")
 
+
 // Event listener to start the time, and quiz once button is clicked.
 var btnElement = document.getElementById("startquiz");
 btnElement.addEventListener("click", startQuiz);
@@ -45,7 +46,7 @@ var questions =
 "How do you access string Apple from the following code? \n var fruits = ['kiwi', 'Mango', 'Apple', 'Dragon Fruit']"]
 
 
-
+//Getting questions from html and storing into the variable. 
 var question1Element = document.getElementById("question1");
 var question2Element = document.getElementById("question2");
 var question3Element = document.getElementById("question3");
@@ -62,7 +63,7 @@ var scoreTrack = 0;
 var currentQuestion = 1;
 
 function nextQuestion() {
-    
+    //conditional statment will run if user click on the correct answer. 
     if (currentQuestion === 1) {
         question2Element.innerHTML = questions[1];
         quizp1.style.display = "none";
@@ -84,6 +85,7 @@ function nextQuestion() {
     } else {
         quizp4.style.display = "none";
         resultp.style.display = "block";
+        scoreTrack += 1;
     }
 
     startTimer();
@@ -94,7 +96,7 @@ var wrongAnswerElement = document.getElementsByClassName("wrong");
 for (i = 0; i < wrongAnswerElement.length; ++i) {
     wrongAnswerElement[i].addEventListener("click", wrongAnswer)
 }
-
+// Function that notfies the wrong answer and moves to next question without recieving score
 function wrongAnswer(event) {
     alert("Wrong!");
     event.preventDefault()
@@ -105,15 +107,34 @@ var fullName = document.getElementById("fullname");
 var submitB = document.getElementById("submit");
 
 function highScore(){
+    //Dictionary of user name and score. 
     var storedHighScore = {
             fullName: fullName.value,
             scoreTrack: scoreTrack
     }
     localStorage.setItem("Score", JSON.stringify(storedHighScore));
 }
-
+//Once pressed submit, it will run highScore function and reset the scoreTrack.
 submitB.addEventListener("click", function() {
     highScore();
     scoreTrack = 0
+    resultp.style.display = 'none';
+    highscorep.style.display = 'block';
+    scoreChart()
+
 });
+
+
+
+function scoreChart() {
+    for (i = 0; i > 10; i++){
+        var scoreTag = document.createElement("p"); 
+        scoreTag.setAttribute('id', i);
+        highscorep.appendChild(scoreTag);
+        var  getScore = JSON.parse(localStorage.getItem("storedHighScore"));
+        scoreTag.innerHTML(getScore);
+
+    }
+}   
+
 

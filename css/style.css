@@ -1,7 +1,10 @@
+/* Backgroup set color */
 html {
     background-color:steelblue;
 }
 
+
+/* Intro page decoration */
 #introp {
     display: flex;
 
@@ -44,7 +47,7 @@ h2 {
 }
 
 
-
+/* Question pages to display none until function is called in the JS*/
 #quizp {
     display: none;
     text-align: center;
@@ -108,7 +111,7 @@ h1 {
     text-align: center;
 }
 
-
+/* Result page decoration. */
 #resultp {
     display: none;
     text-align: center;
@@ -144,4 +147,11 @@ label {
 input {
     font-size: x-large;
     text-align: center;
+}
+
+
+
+#highscorep {
+    display: none;
+    
 }

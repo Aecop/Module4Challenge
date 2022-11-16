@@ -108,10 +108,10 @@ var submitB = document.getElementById("submit");
 
 function highScore(){
     //Dictionary of user name and score. 
-    var storedHighScore = {
+    var storedHighScore = [{
             fullName: fullName.value,
             scoreTrack: scoreTrack
-    }
+    }]
     localStorage.setItem("Score", JSON.stringify(storedHighScore));
 }
 //Once pressed submit, it will run highScore function and reset the scoreTrack.
@@ -120,21 +120,20 @@ submitB.addEventListener("click", function() {
     scoreTrack = 0
     resultp.style.display = 'none';
     highscorep.style.display = 'block';
-    scoreChart()
+   //scoreChart()
 
 });
 
 
 
-function scoreChart() {
-    for (i = 0; i > 10; i++){
-        var scoreTag = document.createElement("p"); 
-        scoreTag.setAttribute('id', i);
-        highscorep.appendChild(scoreTag);
-        var  getScore = JSON.parse(localStorage.getItem("storedHighScore"));
-        scoreTag.innerHTML(getScore);
+// function scoreChart() {
+//         var scoreTag = document.createElement("p"); 
+//         highscorep.appendChild(scoreTag);
+//         var  getScore = JSON.parse(localStorage.getItem("storedHighScore"));
+//         scoreTag.innerHTML = getScore.fullName
+//         scoreTag.innerHTML = getScore.scoreTrack
 
-    }
-}   
+//     }
+
 
 

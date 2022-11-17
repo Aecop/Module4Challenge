@@ -90,6 +90,7 @@ function nextQuestion() {
 
     startTimer();
     ++currentQuestion;
+    
 }
 //When clicked wrong answer, alert will show up saying "Wrong!" and it will not continue to next page. 
 var wrongAnswerElement = document.getElementsByClassName("wrong");
@@ -99,8 +100,9 @@ for (i = 0; i < wrongAnswerElement.length; ++i) {
 // Function that notfies the wrong answer and moves to next question without recieving score
 function wrongAnswer(event) {
     alert("Wrong!");
-    event.preventDefault()
+    event.preventDefault();
     nextQuestion();
+    scoreTrack -= 1;
 }
 // Getting user name and storing it to the local storage. 
 var fullName = document.getElementById("fullname");
@@ -108,30 +110,39 @@ var submitB = document.getElementById("submit");
 
 function highScore(){
     //Dictionary of user name and score. 
-    var storedHighScore = [{
+    var storedHighScore = {
             fullName: fullName.value,
             scoreTrack: scoreTrack
-    }]
-    localStorage.setItem("Score", JSON.stringify(storedHighScore));
+    }
+    localStorage.setItem("storedHighScore", JSON.stringify(storedHighScore));
+
+    var scoreTag = document.createElement("p"); 
+    const getScore = JSON.parse(localStorage.getItem("storedHighScore")) || [];
+    scoreTag.innerHTML = getScore
+    highscorep.appendChild(scoreTag);
+    var storeValuElement = 'Score: ' + storedHighScore.fullName + ' , ' + storedHighScore.scoreTrack
+    highscorep.innerHTML = storeValuElement
+
+    
 }
 //Once pressed submit, it will run highScore function and reset the scoreTrack.
 submitB.addEventListener("click", function() {
     highScore();
-    scoreTrack = 0
     resultp.style.display = 'none';
     highscorep.style.display = 'block';
-   //scoreChart()
+    //scoreChart()
 
 });
 
 
 
 // function scoreChart() {
-//         var scoreTag = document.createElement("p"); 
-//         highscorep.appendChild(scoreTag);
-//         var  getScore = JSON.parse(localStorage.getItem("storedHighScore"));
-//         scoreTag.innerHTML = getScore.fullName
-//         scoreTag.innerHTML = getScore.scoreTrack
+//     var scoreTag = document.createElement("p"); 
+//     var  getScore = JSON.parse(localStorage.getItem("storedHighScore"));
+//     scoreTag.innerHTML = getScore.fullName
+//     scoreTag.innerHTML = getScore.scoreTrack
+//     highscorep.appendChild(scoreTag);
+       
 
 //     }
 

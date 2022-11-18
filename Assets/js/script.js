@@ -18,7 +18,7 @@ highscorebtn.addEventListener('click', function(){
 // Event listener to start the time, and quiz once button is clicked.
 var btnElement = document.getElementById("startquiz");
 btnElement.addEventListener("click", startQuiz);
-var localStorageRetrieved= JSON.parse(localStorage.getItem("storedHighScore")) || [];
+var localStorageRetrieved = JSON.parse(localStorage.getItem("storedHighScore")) || [];
 console.log('on load', localStorageRetrieved)
 function startQuiz(){
     startTimer(60)
@@ -29,7 +29,6 @@ function startQuiz(){
 
 // Timer function
 var timerEl = document.getElementById("timer");
-
 
 function startTimer(seconds) {
     let counter = seconds;
@@ -133,7 +132,7 @@ function highScore(){
     console.log(localStorageRetrieved)
     const getScore = JSON.parse(localStorage.getItem("storedHighScore")) || [];
     
-    for(i=0; i > localStorageRetrieved.length; i++){
+    for(var i=0; i > localStorageRetrieved.length; i++){
         var scoreTag = document.createElement("p");
         scoreTag.innerHTML = JSON.stringify(localStorageRetrieved[[i]]);
         highscorep.appendChild(scoreTag);
@@ -153,7 +152,7 @@ submitB.addEventListener("click", function() {
 });
 
 
-console.log(JSON.stringify(localStorageRetrieved[[i]]));
+
 
 
 

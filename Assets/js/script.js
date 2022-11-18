@@ -15,6 +15,7 @@ gameOver = false
 highscorebtn.addEventListener('click', function(){
     introp.style.display="none";
     highscorep.style.display="block";
+    highScore()
 })
 
 
@@ -141,8 +142,10 @@ function highScore(){
     JSON.parse(localStorage.getItem("storedHighScore")) || [];
     
     for(var i=0; i < localStorageRetrieved.length; i++){
+        var item = localStorageRetrieved[i]
         var scoreTag = document.createElement("p");
-        scoreTag.innerText = JSON.stringify(localStorageRetrieved[i]) 
+        // scoreTag.innerText = JSON.stringify(localStorageRetrieved[i].fullName) 
+        scoreTag.innerText = "Name: " + item.fullName + " | Score: " + item.scoreTrack + " out of 4!";
         highscorep.appendChild(scoreTag);
         
    

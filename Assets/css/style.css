@@ -155,3 +155,33 @@ input {
     display: none;
     
 }
+
+#highscorep > * {
+    font-size: large;
+    font-family: monospace;
+    color: white;
+    text-align: center;
+    
+}
+
+#clear {
+    height: 100px;
+    width: 150px;
+    background-color: red;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 10%;
+    left: 45%;
+    transition: all .2s ease-in-out;
+}
+#clear:hover {
+
+    opacity: .5;
+    transform: scale(1.2)
+
+
+}
+#clearbtnbox {
+    display: flex;
+    justify-content: center;
+}

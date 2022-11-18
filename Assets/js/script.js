@@ -4,9 +4,13 @@ var quizp1 = document.getElementById("quizp");
 var quizp2 = document.getElementById("quizp2");
 var quizp3 = document.getElementById("quizp3");
 var quizp4 = document.getElementById("quizp4");
-var resultp = document.getElementById("resultp")
-var highscorep = document.getElementById("highscorep")
-var highscorebtn = document.getElementById("highscore")
+var resultp = document.getElementById("resultp");
+var highscorep = document.getElementById("highscorep");
+var highscorebtn = document.getElementById("highscore");
+var clearbtn = document.getElementById("clear");
+
+//Variable to keep track if the quiz is done or not. This will cause quiz timer to continue or stop
+gameOver = false
 
 highscorebtn.addEventListener('click', function(){
     introp.style.display="none";
@@ -19,9 +23,9 @@ highscorebtn.addEventListener('click', function(){
 var btnElement = document.getElementById("startquiz");
 btnElement.addEventListener("click", startQuiz);
 var localStorageRetrieved = JSON.parse(localStorage.getItem("storedHighScore")) || [];
-console.log('on load', localStorageRetrieved)
+console.log('on load', localStorageRetrieved);
 function startQuiz(){
-    startTimer(60)
+    startTimer(60);
     introp.style.display="none";
     quizp1.style.display="block";
     
@@ -35,17 +39,20 @@ function startTimer(seconds) {
          
     const interval = setInterval(() => {
       console.log(counter);
-      timerEl.innerHTML = counter 
+      timerEl.innerText = counter;
       counter--;
-        
+      if (gameOver === true) {
+        clearInterval(interval);
+    }
+      
       if (counter < 0 ) {
         clearInterval(interval);
         console.log('Ding!');
-        alert('Times UP!')
+        alert('Times UP!');
       }
     }, 1000);
+    
   }
-
 
 
 
@@ -62,7 +69,7 @@ var questions =
 var question1Element = document.getElementById("question1");
 var question2Element = document.getElementById("question2");
 var question3Element = document.getElementById("question3");
-var question4Element = document.getElementById("question4")
+var question4Element = document.getElementById("question4");
 question1Element.innerHTML = questions[0];
 
 //When clicked correct answer, call nextQuestion function to display 2nd question
@@ -98,6 +105,7 @@ function nextQuestion() {
         quizp4.style.display = "none";
         resultp.style.display = "block";
         scoreTrack += 1;
+        gameOver = true;
     }
 
     startTimer();
@@ -130,30 +138,32 @@ function highScore(){
     localStorageRetrieved.push(storedHighScore)
     localStorage.setItem("storedHighScore", JSON.stringify(localStorageRetrieved));
     console.log(localStorageRetrieved)
-    const getScore = JSON.parse(localStorage.getItem("storedHighScore")) || [];
+    JSON.parse(localStorage.getItem("storedHighScore")) || [];
     
-    for(var i=0; i > localStorageRetrieved.length; i++){
+    for(var i=0; i < localStorageRetrieved.length; i++){
         var scoreTag = document.createElement("p");
-        scoreTag.innerHTML = JSON.stringify(localStorageRetrieved[[i]]);
+        scoreTag.innerText = JSON.stringify(localStorageRetrieved[i]) 
         highscorep.appendChild(scoreTag);
-        console.log(localStorageRetrieved[i].map(({fullName}) => fullName));
-    }
+        
    
-
+    }
     
 }
 //Once pressed submit, it will run highScore function and reset the scoreTrack.
 submitB.addEventListener("click", function() {
     highScore();
     resultp.style.display = 'none';
-    highscorep.style.display = 'block';
+    highscorep.style.display = 'flex';
+    highscorep.style.justifyContent ='center';
+    gameOver = true;
     
 
 });
 
-
-
-
+clearbtn.addEventListener("click", function() {
+    alert("Local Storage has been cleared! Once refreshed, Score listed will be gone!")
+    localStorage.clear();
+})
 
 
 

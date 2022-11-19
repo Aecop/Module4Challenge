@@ -39,8 +39,8 @@ function startTimer(seconds) {
     let counter = seconds;
          
     const interval = setInterval(() => {
-      console.log(counter);
-      timerEl.innerText = counter;
+      
+      timerEl.innerText = "Time: " + counter;
       counter--;
       if (gameOver === true) {
         clearInterval(interval);
@@ -52,12 +52,12 @@ function startTimer(seconds) {
         alert('Times UP!');
       }
     }, 1000);
-    
+
   }
 
 
 
-//Question and Answer stored 
+//Questions that will be displayed on the page. 
 
 var questions = 
 ["What is the correct way to delcare the hello function in JS?",
@@ -141,10 +141,10 @@ function highScore(){
     console.log(localStorageRetrieved)
     JSON.parse(localStorage.getItem("storedHighScore")) || [];
     
+    // For loop to add the length of localStorageRetrieved data to <p> tag and store the data. 
     for(var i=0; i < localStorageRetrieved.length; i++){
         var item = localStorageRetrieved[i]
         var scoreTag = document.createElement("p");
-        // scoreTag.innerText = JSON.stringify(localStorageRetrieved[i].fullName) 
         scoreTag.innerText = "Name: " + item.fullName + " | Score: " + item.scoreTrack + " out of 4!";
         highscorep.appendChild(scoreTag);
         
@@ -162,7 +162,7 @@ submitB.addEventListener("click", function() {
     
 
 });
-
+// Clear button that triggers to clear out data stored in local storage. 
 clearbtn.addEventListener("click", function() {
     alert("Local Storage has been cleared! Once refreshed, Score listed will be gone!")
     localStorage.clear();
